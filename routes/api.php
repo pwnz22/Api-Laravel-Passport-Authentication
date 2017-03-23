@@ -10,7 +10,8 @@ Route::get('/tweets', [
     'uses' => 'TweetsController@index',
     'middleware' => ['auth:api']
 ]);
+
 Route::post('/tweets', [
     'uses' => 'TweetsController@store',
-    'middleware' => ['auth:api']
+    'middleware' => ['auth:api', 'scope:post-tweets']
 ]);
