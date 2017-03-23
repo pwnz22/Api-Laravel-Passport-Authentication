@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Gate;
+use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -32,5 +33,8 @@ class AuthServiceProvider extends ServiceProvider
             'view-tweets' => 'View tweets',
             'post-tweets' => 'Post tweets'
         ]);
+
+        Passport::tokensExpireIn(Carbon::now()->addSeconds(20));
+        Passport::refreshTokensExpireIn(Carbon::now()->addSeconds(30));
     }
 }
