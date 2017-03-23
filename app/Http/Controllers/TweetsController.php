@@ -8,7 +8,7 @@ class TweetsController extends Controller
 {
     public function index()
     {
-        return request()->user()->tweets()->with(['user'])->get();
+        return request()->user()->tweets()->with(['user'])->latestFirst()->get();
     }
 
     public function store(Request $request)
